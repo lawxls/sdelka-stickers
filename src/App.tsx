@@ -2317,7 +2317,7 @@ export default function App() {
                       {/* Website URL + Location (mobile: inline) */}
                       <div className="flex items-center gap-1.5 mb-0.5 md:mb-1">
                         <Globe size={12} className="text-[#5f6368] md:w-[14px] md:h-[14px]" />
-                        <span className="text-[11px] md:text-[12px] text-[#5f6368]">{supplier.website}</span>
+                        <a href={`https://${supplier.website}`} target="_blank" rel="noopener noreferrer" className="text-[11px] md:text-[12px] text-[#5f6368] hover:underline">{supplier.website}</a>
                         <span className="md:hidden text-[11px] text-[#bdc1c6]">·</span>
                         <span className="md:hidden text-[11px] text-[#5f6368]">{supplier.location}</span>
                       </div>
@@ -2438,7 +2438,7 @@ export default function App() {
                               </div>
                             </td>
                             <td className="px-4 py-3">
-                              <span className="text-[13px] text-[#1a0dab] hover:underline cursor-pointer">{supplier.website}</span>
+                              <a href={`https://${supplier.website}`} target="_blank" rel="noopener noreferrer" className="text-[13px] text-[#1a0dab] hover:underline cursor-pointer">{supplier.website}</a>
                             </td>
                           </tr>
                         ))}
