@@ -3,6 +3,11 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import Logo from './imports/Group100001019212';
 import RoundLogo from './imports/Group1000010223';
 
+const YM_COUNTER_ID = 108517995;
+const reachGoal = (goal: string) => {
+  (window as unknown as { ym?: (...args: unknown[]) => void }).ym?.(YM_COUNTER_ID, 'reachGoal', goal);
+};
+
 export default function App() {
   const [searchQuery, setSearchQuery] = useState('Производители этикеток');
   const [viewMode, setViewMode] = useState<'cards' | 'table'>('cards');
@@ -2202,7 +2207,7 @@ export default function App() {
                     <X size={14} className="text-[#70757a]" />
                   </button>
                 )}
-                <button onClick={() => setShowDevModal(true)} className="px-5 py-2 bg-[#ff6a39] hover:bg-[#e55a2f] text-white text-[13px] rounded-full transition-all hover:shadow-md active:scale-[0.97] whitespace-nowrap flex items-center gap-1.5">
+                <button onClick={() => { reachGoal('search_submit'); setShowDevModal(true); }} className="px-5 py-2 bg-[#ff6a39] hover:bg-[#e55a2f] text-white text-[13px] rounded-full transition-all hover:shadow-md active:scale-[0.97] whitespace-nowrap flex items-center gap-1.5">
                   <Search size={14} />
                   Найти
                 </button>
@@ -2240,7 +2245,7 @@ export default function App() {
                   <X size={14} className="text-[#70757a]" />
                 </button>
               )}
-              <button onClick={() => setShowDevModal(true)} className="px-4 py-1.5 bg-[#ff6a39] hover:bg-[#e55a2f] text-white text-[13px] rounded-full transition-all active:scale-[0.96] whitespace-nowrap flex-shrink-0 flex items-center gap-1">
+              <button onClick={() => { reachGoal('search_submit'); setShowDevModal(true); }} className="px-4 py-1.5 bg-[#ff6a39] hover:bg-[#e55a2f] text-white text-[13px] rounded-full transition-all active:scale-[0.96] whitespace-nowrap flex-shrink-0 flex items-center gap-1">
                 <Search size={13} />
                 Найти
               </button>
@@ -2270,7 +2275,7 @@ export default function App() {
               {/* Action Bar - desktop */}
               <div className="hidden md:flex items-center justify-between mb-4">
                 <div className="flex items-center gap-2">
-                  <button onClick={() => window.open('https://sdelka.ai', '_blank')} className="inline-flex items-center gap-2 px-4 py-2 bg-white hover:bg-[#f8f9fa] border border-[#dadce0] text-[#3c4043] text-[13px] rounded-full transition-colors">
+                  <button onClick={() => { reachGoal('request_kp'); window.open('https://sdelka.ai', '_blank'); }} className="inline-flex items-center gap-2 px-4 py-2 bg-white hover:bg-[#f8f9fa] border border-[#dadce0] text-[#3c4043] text-[13px] rounded-full transition-colors">
                     <Send size={15} />
                     <span>Запросить КП</span>
                   </button>
@@ -2501,7 +2506,7 @@ export default function App() {
                       </div>
 
                       <button
-                        onClick={() => window.open('https://sdelka.ai', '_blank')}
+                        onClick={() => { reachGoal('request_kp_all'); window.open('https://sdelka.ai', '_blank'); }}
                         className="w-full py-2.5 bg-white text-[#ff6a39] text-[13px] rounded-xl shadow-lg flex items-center justify-center gap-2 active:scale-[0.97] transition-transform"
                       >
                         <span>Запросить КП у всех</span>
@@ -2566,7 +2571,7 @@ export default function App() {
                       </div>
 
                       <button
-                        onClick={() => window.open('https://sdelka.ai', '_blank')}
+                        onClick={() => { reachGoal('request_kp_all'); window.open('https://sdelka.ai', '_blank'); }}
                         className="w-full px-5 py-3.5 bg-white text-[#ff6a39] text-[15px] rounded-xl shadow-lg flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-[0.97] transition-transform"
                       >
                         <span>Запросить КП у всех</span>
@@ -2587,7 +2592,7 @@ export default function App() {
       {/* Mobile Bottom Action Bar */}
       <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-[#e5e5e5] px-3 py-2.5 safe-area-pb">
         <div className="flex gap-2">
-          <button onClick={() => window.open('https://sdelka.ai', '_blank')} className="flex-1 inline-flex items-center justify-center gap-2 py-2.5 bg-white border border-[#dadce0] text-[#3c4043] text-[13px] rounded-xl transition-colors">
+          <button onClick={() => { reachGoal('request_kp'); window.open('https://sdelka.ai', '_blank'); }} className="flex-1 inline-flex items-center justify-center gap-2 py-2.5 bg-white border border-[#dadce0] text-[#3c4043] text-[13px] rounded-xl transition-colors">
             <Send size={16} />
             <span>Запросить КП</span>
           </button>
